@@ -352,10 +352,12 @@
   (let ((metadata-face font-lock-builtin-face)
         (keyword-face font-lock-keyword-face)
         (instruction-face font-lock-function-name-face)
+        (comment-face font-lock-comment-face)
 
         (keyword-regexp (concat "\\<" (regexp-opt cil-keywords) "\\>"))
         (instruction-regexp (concat "\\<" (regexp-opt cil-instructions) "\\>")))
     (list
+     (cons "//.*" comment-face)
      (cons "\\.\\w+\\>" metadata-face)
      (cons keyword-regexp keyword-face)
      (cons instruction-regexp instruction-face))))
