@@ -4,7 +4,7 @@
 
 ;; Author: Friedrich von Never <friedrich@fornever.me>
 ;; URL: https://github.com/ForNeVeR/cil-mode
-;; Version: 0.1
+;; Version: 0.2
 ;; Keywords: languages
 
 ;;; Commentary:
