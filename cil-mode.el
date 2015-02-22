@@ -364,11 +364,13 @@
         (keyword-face font-lock-keyword-face)
         (instruction-face font-lock-function-name-face)
         (comment-face font-lock-comment-face)
+        (label-face font-lock-preprocessor-face)
 
         (keyword-regexp (concat "\\<" (regexp-opt cil-keywords) "\\>"))
         (instruction-regexp (concat "\\<" (regexp-opt cil-instructions) "\\>")))
     (list
      (cons "//.*" comment-face)
+     (cons "\\<\\w+:" label-face)
      (cons "\\.\\w+\\>" metadata-face)
      (cons keyword-regexp keyword-face)
      (cons instruction-regexp instruction-face))))
@@ -376,13 +378,19 @@
 (defvar cil-font-lock-keywords cil-font-lock-keywords-1
   "Default highlighing expressions for CIL mode")
 
+(defun is-label ()
+  (char-equal ?: (char-before (line-end-position))))
+
 (defun cil-indent-line ()
   "Indent current line as CIL code"
   (interactive)
-  (beginning-of-line) ;; TODO: More indentation.
-  (if (bobp)
-      (indent-line-to 0)
-    (indent-line-to (* 4 (car (syntax-ppss))))))
+  (beginning-of-line)
+  (cond ((bobp)
+         (indent-line-to 0))
+        ((is-label)
+         (indent-line-to (- (* 4 (car (syntax-ppss))) 4)))
+        (t
+         (indent-line-to (* 4 (car (syntax-ppss)))))))
 
 (defvar cil-mode-syntax-table
   (let ((st (make-syntax-table)))
