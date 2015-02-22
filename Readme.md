@@ -1,4 +1,4 @@
-cil-mode [![MELPA](http://melpa.org/packages/cil-mode-badge.svg)](http://melpa.org/#/cil-mode)
+cil-mode [![MELPA](http://melpa.org/packages/cil-mode-badge.svg)](http://melpa.org/#/cil-mode) [![MELPA Stable](http://stable.melpa.org/packages/cil-mode-badge.svg)](http://stable.melpa.org/#/cil-mode)
 ========
 cil-mode is a major [emacs](http://www.gnu.org/software/emacs/) mode for editing of [Common Intermediate
 Language](http://en.wikipedia.org/wiki/Common_Intermediate_Language). It helps emacs to highlight CIL keywords and sets
@@ -16,5 +16,6 @@ Here's a screenshot of cil-mode with [gruber-darker-theme](https://github.com/re
 
 Installation
 ------------
-You can install the package through [melpa](http://melpa.org/#/cil-mode). `cil-mode` will be automatically loaded when
-`*.il` file is opened.
+You can install the package through [melpa](http://stable.melpa.org/#/cil-mode) (you may also use [unstable
+package](http://melpa.org/#/cil-mode)) if feeling lucky). `cil-mode` will be automatically loaded when `*.il` file is
+opened.
