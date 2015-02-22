@@ -5,12 +5,15 @@
 ;; Author: Friedrich von Never <friedrich@fornever.me>
 ;; URL: https://github.com/ForNeVeR/cil-mode
 ;; Version: 0.1
+;; Keywords: languages
 
-(defvar cil-mode-hook nil)
+;;; Commentary:
 
-(defvar cil-mode-map
-  (make-keymap)
-  "Keymap for CIL major mode")
+;; cil-mode is a major emacs mode for editing of Common Intermediate
+;; Language. It helps emacs to highlight CIL keywords and sets up the
+;; proper indentation for such files.
+
+;;; Code:
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.il\\'" . cil-mode))
@@ -386,20 +389,15 @@
     st)
   "Syntax table for cil-mode")
 
+(defalias 'cil-parent-mode
+  (if (fboundp 'prog-mode) 'prog-mode 'fundamental-mode))
+
 ;;;###autoload
-(defun cil-mode ()
+(define-derived-mode cil-mode cil-parent-mode "CIL"
   "Major mode for editing Common Intermediate Language files"
-  (interactive)
-  (kill-all-local-variables)
-  (set-syntax-table cil-mode-syntax-table)
-  (use-local-map cil-mode-map)
+  (setq font-lock-defaults '(cil-font-lock-keywords))
+  (set (make-local-variable 'indent-line-function) 'cil-indent-line))
 
-  (set (make-local-variable 'font-lock-defaults) '(cil-font-lock-keywords))
-  (set (make-local-variable 'indent-line-function) 'cil-indent-line)
-
-  (setq major-mode 'cil-mode)
-  (setq mode-name "CIL")
-  (run-hooks 'cil-mode-hook))
 
 (provide 'cil-mode)
 
