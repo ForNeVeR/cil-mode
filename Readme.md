@@ -17,5 +17,5 @@ Here's a screenshot of cil-mode with [gruber-darker-theme](https://github.com/re
 Installation
 ------------
 You can install the package through [melpa](http://stable.melpa.org/#/cil-mode) (you may also use [unstable
-package](http://melpa.org/#/cil-mode)) if feeling lucky). `cil-mode` will be automatically loaded when `*.il` file is
+package](http://melpa.org/#/cil-mode) if feeling lucky). `cil-mode` will be automatically loaded when `*.il` file is
 opened.
