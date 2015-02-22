@@ -130,7 +130,9 @@
   "Indent current line as CIL code"
   (interactive)
   (beginning-of-line) ;; TODO: More indentation.
-  (indent-line-to 0))
+  (if (bobp)
+      (indent-line-to 0)
+    (indent-line-to (* 4 (car (syntax-ppss))))))
 
 (defvar cil-mode-syntax-table
   (let ((st (make-syntax-table)))
