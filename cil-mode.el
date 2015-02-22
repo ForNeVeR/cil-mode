@@ -381,13 +381,22 @@
 (defun is-label ()
   (char-equal ?: (char-before (line-end-position))))
 
+(defun is-closing-brace ()
+  (save-excursion
+    (beginning-of-line)
+    (skip-chars-forward "[:blank:]")
+    (message (number-to-string (point)))
+    (message (char-to-string (char-after (point))))
+    (char-equal ?} (char-after (point)))))
+
 (defun cil-indent-line ()
   "Indent current line as CIL code"
   (interactive)
   (beginning-of-line)
   (cond ((bobp)
          (indent-line-to 0))
-        ((is-label)
+        ((or (is-label)
+             (is-closing-brace))
          (indent-line-to (- (* 4 (car (syntax-ppss))) 4)))
         (t
          (indent-line-to (* 4 (car (syntax-ppss)))))))
