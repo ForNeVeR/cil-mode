@@ -386,6 +386,7 @@
     st)
   "Syntax table for cil-mode")
 
+;;;###autoload
 (defun cil-mode ()
   "Major mode for editing Common Intermediate Language files"
   (interactive)
