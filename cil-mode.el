@@ -1,3 +1,11 @@
+;;; cil-mode.el --- Common Intermediate Language mode
+
+;; Copyright (C) 2015 Friedrich von Never
+
+;; Author: Friedrich von Never <friedrich@fornever.me>
+;; URL: https://github.com/ForNeVeR/cil-mode
+;; Version: 0.1
+
 (defvar cil-mode-hook nil)
 
 (defvar cil-mode-map
@@ -393,3 +401,5 @@
   (run-hooks 'cil-mode-hook))
 
 (provide 'cil-mode)
+
+;;; cil-mode.el ends here.
