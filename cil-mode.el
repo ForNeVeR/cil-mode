@@ -4,7 +4,7 @@
 
 ;; Author: Friedrich von Never <friedrich@fornever.me>
 ;; URL: https://github.com/ForNeVeR/cil-mode
-;; Version: 0.2.1
+;; Version: 0.3
 ;; Keywords: languages
 
 ;;; Commentary:
@@ -386,10 +386,6 @@
     (let* ((current-point (point))
            (char-after-point (char-after current-point)))
       (when char-after-point
-        ;; FIXME: do you really need to output this info to the
-        ;; message log?
-        (message (number-to-string current-point))
-        (message (char-to-string char-after-point))
         (char-equal ?} char-after-point)))))
 
 (defun cil-indent-line ()
