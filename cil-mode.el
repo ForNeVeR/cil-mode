@@ -383,9 +383,14 @@
   (save-excursion
     (beginning-of-line)
     (skip-chars-forward "[:blank:]")
-    (message (number-to-string (point)))
-    (message (char-to-string (char-after (point))))
-    (char-equal ?} (char-after (point)))))
+    (let* ((current-point (point))
+           (char-after-point (char-after current-point)))
+      (when char-after-point
+        ;; FIXME: do you really need to output this info to the
+        ;; message log?
+        (message (number-to-string current-point))
+        (message (char-to-string char-after-point))
+        (char-equal ?} char-after-point)))))
 
 (defun cil-indent-line ()
   "Indent current line as CIL code"
@@ -414,7 +419,16 @@
 (define-derived-mode cil-mode cil-parent-mode "CIL"
   "Major mode for editing Common Intermediate Language files"
   (setq font-lock-defaults '(cil-font-lock-keywords))
-  (set (make-local-variable 'indent-line-function) 'cil-indent-line))
+  (set (make-local-variable 'indent-line-function) 'cil-indent-line)
+  ;; Comments
+  (make-local-variable 'comment-start)
+  (setq comment-start "// ")
+  (make-local-variable 'comment-end)
+  (setq comment-end "")
+  (make-local-variable 'comment-start-skip)
+  (setq comment-start-skip "//[ \t]*")
+  (make-local-variable 'comment-column)
+  (setq comment-column 0))
 
 
 (provide 'cil-mode)
