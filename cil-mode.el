@@ -4,7 +4,7 @@
 
 ;; Author: Friedrich von Never <friedrich@fornever.me>
 ;; URL: https://github.com/ForNeVeR/cil-mode
-;; Version: 0.2
+;; Version: 0.2.1
 ;; Keywords: languages
 
 ;;; Commentary:
@@ -360,16 +360,14 @@
                             "xor"))
 
 (defconst cil-font-lock-keywords-1
-  (let ((metadata-face font-lock-builtin-face)
+  (let ((label-face font-lock-preprocessor-face)
+        (metadata-face font-lock-builtin-face)
         (keyword-face font-lock-keyword-face)
         (instruction-face font-lock-function-name-face)
-        (comment-face font-lock-comment-face)
-        (label-face font-lock-preprocessor-face)
 
         (keyword-regexp (concat "\\<" (regexp-opt cil-keywords) "\\>"))
         (instruction-regexp (concat "\\<" (regexp-opt cil-instructions) "\\>")))
     (list
-     (cons "//.*" comment-face)
      (cons "\\<\\w+:" label-face)
      (cons "\\.\\w+\\>" metadata-face)
      (cons keyword-regexp keyword-face)
@@ -403,6 +401,9 @@
 
 (defvar cil-mode-syntax-table
   (let ((st (make-syntax-table)))
+    (modify-syntax-entry ?/ ". 124b" st)
+    (modify-syntax-entry ?* ". 23" st)
+    (modify-syntax-entry ?\n "> b" st)
     st)
   "Syntax table for cil-mode")
 
