@@ -372,7 +372,7 @@
      (list "^\\s-*#.*" 0 preprocessor-face t)
      (cons instruction-regexp instruction-face)
      (cons "^\\s-*\\<\\(\\w\\|\\s_\\)+:" label-face)
-     (cons "\\.\\w+\\>" metadata-face)
+     (cons "^\\s-*\\.\\w+\\>" metadata-face)
      (cons keyword-regexp keyword-face))))
 
 (defvar cil-font-lock-keywords nil
