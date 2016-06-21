@@ -379,10 +379,10 @@
 (defvar cil-mode-indentation-size 4
   "Base indentation size for CIL mode.")
 
-(defun is-label ()
+(defun cil-mode--is-label ()
   (char-equal ?: (char-before (line-end-position))))
 
-(defun is-closing-brace ()
+(defun cil-mode--is-closing-brace ()
   (save-excursion
     (beginning-of-line)
     (skip-chars-forward "[:blank:]")
@@ -397,8 +397,8 @@
   (beginning-of-line)
   (cond ((bobp)
          (indent-line-to 0))
-        ((or (is-label)
-             (is-closing-brace))
+        ((or (cil-mode--is-label)
+             (cil-mode--is-closing-brace))
          (indent-line-to (- (* cil-mode-indentation-size (car (syntax-ppss))) cil-mode-indentation-size)))
         (t
          (indent-line-to (* cil-mode-indentation-size (car (syntax-ppss)))))))
