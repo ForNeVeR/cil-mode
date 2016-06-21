@@ -368,7 +368,7 @@
         (keyword-regexp (concat "\\<" (regexp-opt cil-keywords) "\\>"))
         (instruction-regexp (concat "\\<" (regexp-opt cil-instructions) "\\>")))
     (list
-     (cons "\\<\\w+:" label-face)
+     (cons "\\<\\(\\w\\|\\s_\\)+:" label-face)
      (cons "\\.\\w+\\>" metadata-face)
      (cons keyword-regexp keyword-face)
      (cons instruction-regexp instruction-face))))
