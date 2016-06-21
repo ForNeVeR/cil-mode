@@ -376,6 +376,9 @@
 (defvar cil-font-lock-keywords cil-font-lock-keywords-1
   "Default highlighing expressions for CIL mode")
 
+(defvar cil-mode-indentation-size 4
+  "Base indentation size for CIL mode.")
+
 (defun is-label ()
   (char-equal ?: (char-before (line-end-position))))
 
@@ -396,9 +399,9 @@
          (indent-line-to 0))
         ((or (is-label)
              (is-closing-brace))
-         (indent-line-to (- (* 4 (car (syntax-ppss))) 4)))
+         (indent-line-to (- (* cil-mode-indentation-size (car (syntax-ppss))) cil-mode-indentation-size)))
         (t
-         (indent-line-to (* 4 (car (syntax-ppss)))))))
+         (indent-line-to (* cil-mode-indentation-size (car (syntax-ppss)))))))
 
 (defvar cil-mode-syntax-table
   (let ((st (make-syntax-table)))
