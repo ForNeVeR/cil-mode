@@ -364,10 +364,12 @@
         (metadata-face font-lock-builtin-face)
         (keyword-face font-lock-keyword-face)
         (instruction-face font-lock-function-name-face)
+        (preprocessor-face font-lock-preprocessor-face)
 
         (keyword-regexp (concat "\\<" (regexp-opt cil-keywords) "\\>"))
         (instruction-regexp (concat "\\<" (regexp-opt cil-instructions) "\\>")))
     (list
+     (list "^\\s-*#.*" 0 preprocessor-face t)
      (cons instruction-regexp instruction-face)
      (cons "^\\s-*\\<\\(\\w\\|\\s_\\)+:" label-face)
      (cons "\\.\\w+\\>" metadata-face)
