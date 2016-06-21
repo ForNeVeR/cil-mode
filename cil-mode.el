@@ -373,8 +373,9 @@
      (cons keyword-regexp keyword-face)
      (cons instruction-regexp instruction-face))))
 
-(defvar cil-font-lock-keywords cil-font-lock-keywords-1
+(defvar cil-font-lock-keywords nil
   "Default highlighing expressions for CIL mode")
+(setq cil-font-lock-keywords cil-font-lock-keywords-1)
 
 (defvar cil-mode-indentation-size 4
   "Base indentation size for CIL mode.")
