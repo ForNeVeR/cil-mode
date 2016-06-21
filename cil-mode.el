@@ -366,8 +366,8 @@
         (instruction-face font-lock-function-name-face)
         (preprocessor-face font-lock-preprocessor-face)
 
-        (keyword-regexp (concat "\\<" (regexp-opt cil-keywords) "\\>"))
-        (instruction-regexp (concat "\\<" (regexp-opt cil-instructions) "\\>")))
+        (keyword-regexp (concat "\\_<" (regexp-opt cil-keywords) "\\_>"))
+        (instruction-regexp (concat "\\_<" (regexp-opt cil-instructions) "\\_>")))
     (list
      (list "^\\s-*#.*" 0 preprocessor-face t)
      (cons instruction-regexp instruction-face)
