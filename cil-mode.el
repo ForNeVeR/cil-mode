@@ -368,10 +368,10 @@
         (keyword-regexp (concat "\\<" (regexp-opt cil-keywords) "\\>"))
         (instruction-regexp (concat "\\<" (regexp-opt cil-instructions) "\\>")))
     (list
+     (cons instruction-regexp instruction-face)
      (cons "\\<\\(\\w\\|\\s_\\)+:" label-face)
      (cons "\\.\\w+\\>" metadata-face)
-     (cons keyword-regexp keyword-face)
-     (cons instruction-regexp instruction-face))))
+     (cons keyword-regexp keyword-face))))
 
 (defvar cil-font-lock-keywords nil
   "Default highlighing expressions for CIL mode")
