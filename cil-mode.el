@@ -1,10 +1,10 @@
 ;;; cil-mode.el --- Common Intermediate Language mode
 
-;; Copyright (C) 2015 Friedrich von Never
+;; Copyright (C) 2015-2016 Friedrich von Never
 
 ;; Author: Friedrich von Never <friedrich@fornever.me>
 ;; URL: https://github.com/ForNeVeR/cil-mode
-;; Version: 0.3
+;; Version: 0.4
 ;; Keywords: languages
 
 ;;; Commentary:
